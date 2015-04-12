@@ -1,11 +1,20 @@
 <?php
     require_once __DIR__.'/../vendor/autoload.php';
 
+    use PhpWhois\PhpWhois;
+
     $app = new Silex\Application();
     $app['debug'] = true;
 
+
+    $app['PhpWhois'] = $app->share(function ($app) {
+        return new Whois();
+    });
+
     $app->get('/api/v1/', function () use ($app) {
+
         return 'API DirtyBranding.';
+
     });
 
     /*
@@ -170,20 +179,41 @@
     });
 
     /*
-    GET /domains/{domain}/availability
+    GET /domains/{domain}/availabe
+    Retourne true pour la propriété "available" si le domaine est disponible.
+    Utilisation du provider phpWhois https://github.com/phpWhois/phpWhois
     */
-    $app->get('/api/v1/domains/{domain}/availability',
+
+    $app->get('/api/v1/domains/{domain}/availabe',
         function (Silex\Application $app, $domain) {
-            return json_encode(null);
+
+            $domain_escaped = $app->escape(urldecode($domain));
+
+            $availabe = false;
+
+            $app['PhpWhois']->deepWhois = false;
+            $result = $app['PhpWhois']->lookup($domain_escaped,false);
+
+            if($result['regrinfo']['registered'] == 'no')
+            {
+                $availabe = true;
+            }
+
+            return json_encode($availabe);
     });
 
     /*
-    GET /brands/{brand}/availability?ipoffices[]=
+    GET /brands/{brand}/availabe?ipoffices[]=
+    Retourne true pour la propriété "available" si la marque est disponible
+    pour le bureau de propriété intellectuel choisi
+    TODO
     */
-    $app->get('/api/v1/brands/{brand}/availability',
+    $app->get('/api/v1/brands/{brand}/availabe',
         function (Silex\Application $app, $brand) {
 
             $brand_escaped = $app->escape(urldecode($brand));
+
+            $availabe = false;
 
             $array_ipoffices = array();
 
@@ -195,16 +225,17 @@
                 }
             }
 
-            return json_encode(null);
+            return json_encode($availabe);
     });
 
     /*
     GET /extensions/
-    Retourne la liste des extensions disponibles.
+    Retourne la liste des extensions par défautÒ.
     */
     $array_default_extensions = array(
         'fr',
-        'com'
+        'com',
+        'net'
     );
 
     $app->get('/api/v1/extensions',
