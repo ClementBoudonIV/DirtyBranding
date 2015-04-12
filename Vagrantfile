@@ -2,6 +2,7 @@
 # vi: set ft=ruby :
 
 $script = <<SCRIPT
+cd /var/www/web/api/v1 && composer install
 sudo sed -i 's#DocumentRoot /var/www/public#DocumentRoot /var/www/web#' /etc/apache2/sites-available/000-default.conf
 sudo /etc/init.d/apache2 restart
 mysql -uroot -proot scotchbox < /var/www/Database/*.sql
