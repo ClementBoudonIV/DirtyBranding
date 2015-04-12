@@ -48,7 +48,8 @@ CREATE TABLE `DB_API`.`Domains` (
   `name` varchar(255) DEFAULT NULL,
   `available` tinyint(1) DEFAULT NULL,
   `dt_caching` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
