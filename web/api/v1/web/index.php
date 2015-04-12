@@ -20,7 +20,7 @@
     $app->get('/api/v1/ideas/{idea}/brands',
         function (Silex\Application $app, $idea) {
 
-            $idea_escaped = $app->escape($idea);
+            $idea_escaped = $app->escape(urldecode($idea));
 
             $array_brands = array($idea_escaped);
             $array_prefixes = array();
@@ -97,7 +97,7 @@
         function (Silex\Application $app, $brand)
         use ($array_default_separators){
 
-            $brand_escaped = $app->escape($brand);
+            $brand_escaped = $app->escape(urldecode($brand));
 
             $array_alternatives = array($brand_escaped);
             $array_separators = array();
@@ -117,7 +117,11 @@
 
             //Gestion des remplacements
             foreach ($array_separators as $separator) {
-                $array_alternatives[] = str_replace(' ',$separator,$brand_escaped);
+                $array_alternatives[] = str_replace(
+                    ' ',
+                    $separator,
+                    $brand_escaped
+                );
             }
 
             //Gestion de tous les remplacements
@@ -134,7 +138,7 @@
     $app->get('/api/v1/brands/{brand}/domains',
         function (Silex\Application $app, $brand) {
 
-            $brand_escaped = $app->escape($brand);
+            $brand_escaped = $app->escape(urldecode($brand));
 
             $array_domains = array();
             $array_extensions = array();
@@ -157,7 +161,7 @@
             else
             {
                 foreach ($array_extensions as $extension) {
-                    $array_domains[] = $brand_escaped.$extension;
+                    $array_domains[] = strtolower($brand_escaped).'.'.$extension;
                 }
                 return json_encode($array_domains);
             }
@@ -178,6 +182,8 @@
     */
     $app->get('/api/v1/brands/{brand}/availability',
         function (Silex\Application $app, $brand) {
+
+            $brand_escaped = $app->escape(urldecode($brand));
 
             $array_ipoffices = array();
 
