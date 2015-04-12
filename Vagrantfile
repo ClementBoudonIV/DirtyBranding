@@ -4,6 +4,7 @@
 $script = <<SCRIPT
 sudo sed -i 's#DocumentRoot /var/www/public#DocumentRoot /var/www/web#' /etc/apache2/sites-available/000-default.conf
 sudo /etc/init.d/apache2 restart
+mysql -uroot -proot scotchbox < /var/www/Database/*.sql
 SCRIPT
 
 Vagrant.configure("2") do |config|
