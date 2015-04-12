@@ -1,2 +1,8 @@
 .DS_STORE
 .vagrant
+
+# Composer
+composer.phar
+vendor/
+
+# Symfony (pour Silex) : specifique au sous dossier
