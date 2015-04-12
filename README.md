@@ -2,7 +2,7 @@
 
 ## Installation
 
-### Pré-requis : 
+### Pré-requis :
 - Virtualbox
 - Vagrant
 
@@ -21,3 +21,6 @@
 | SSH Host  | 192.168.33.10  |
 | SSH User  | vagrant  |
 | SSH Password  | vagrant  |
+
+- Importer `Database\*.sql`
+
