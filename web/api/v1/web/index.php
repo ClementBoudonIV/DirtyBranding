@@ -11,6 +11,17 @@
         return new Whois();
     });
 
+
+    $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
+        'db.options' => array(
+            'driver' => 'pdo_mysql',
+            'dbhost' => 'localhost',
+            'dbname' => 'DB_API',
+            'user' => 'root',
+            'password' => 'root',
+        ),
+    ));
+
     $app->get('/api/v1/', function () use ($app) {
 
         return 'API DirtyBranding.';
