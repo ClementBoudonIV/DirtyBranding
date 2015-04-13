@@ -5,6 +5,8 @@
 ### Pré-requis :
 - Virtualbox
 - Vagrant
+- [nodejs](https://nodejs.org/) (+ `npm config set prefix /usr/local`)
+- [Bower](http://bower.io/)
 
 ### Procédure
 - `vagrant up`
