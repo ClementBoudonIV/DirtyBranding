@@ -1,8 +1,8 @@
 <?php
     /*
-    Import des fichiers stock et flux dans base de données
-    V1-0 (gère uniquement les noms et classes, et uniquement les nouvelles marques, par leur modifs ou suppression)
-    Paramètres cron : Exécution unique
+    Récupération via FTP des denriers fichiers de flux INPI + Import dans base de données
+    V1-0 (gère uniquement les noms et classes, et uniquement les nouvelles marques)
+    Paramètres cron : php 1 3 * * 6 (tous les samedi matin à 03:01)
     */
     date_default_timezone_set('GMT');
 
@@ -16,10 +16,38 @@
 
     $link = new PDO("mysql:dbname=DB_API;host=localhost", "root", "root");
 
+    $time_file = mktime(0,0,0,date("m"),date('d'),date('Y'));
+
+    $today_date = date('Ymd',$time_file);
+  
     $xml_inpi_folder  = __DIR__.'/../../../../Ressources/INPI/XML/';
 
+    //INPI FTP Connexion
+    $ftp_server = '';
+    $ftp_user_name = '';
+    $ftp_user_pass = '';
+
+    $local_zip_file = $xml_inpi_folder.$today_date.'.zip';
+    
+    $remote_zip_file = 'FR_FRST66_'.date('Y-W',$time_file).'.zip';
+
+    $local_xml_filename = 'FR_FRNEWST66_'.date('Y-W',$time_file).'.xml';
+
+    $conn_id = ftp_connect($ftp_server);
+    $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
+    ftp_pasv ( $conn_id , true );
+    ftp_get($conn_id, $local_zip_file, $remote_zip_file, FTP_BINARY);
+    ftp_close($conn_id);
+
+    //Unzip it
+    $zip = new ZipArchive(); 
+    $zip->open($local_zip_file);
+    $zip->extractTo($xml_inpi_folder,array($local_xml_filename));
+    $zip->close();
+
+
     //listing des fichiers XML dispo
-    $list_files = glob($xml_inpi_folder.'*.xml');
+    $list_files = array($xml_inpi_folder.$local_xml_filename);
 
     //$pattern = "~^(".$xml_inpi_folder."FR_FRNEWST66_|".$xml_inpi_folder."ST66_)*.xml$~";
 
@@ -68,9 +96,6 @@
 ';
 
     }
-
-
-
 
 
     $link = null;

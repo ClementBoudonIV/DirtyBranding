@@ -60,7 +60,7 @@ CREATE TABLE `DB_API`.`Domains` (
 
 # DROP TABLE IF EXISTS `DB_API`.`BrandsINPI`;
 
-CREATE TABLE `BrandsINPI` (
+CREATE TABLE `DB_API`.`BrandsINPI` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `dt_caching` timestamp NULL DEFAULT NULL,
