@@ -31,7 +31,7 @@
 
             $TradeMark = simplexml_load_string($node);
 
-            $brand_name = $TradeMark->WordMarkSpecification->MarkVerbalElementText;
+            $brand_name = utf8_decode($TradeMark->WordMarkSpecification->MarkVerbalElementText);
             $sql_ins = "INSERT
             INTO BrandsINPI
             (name, dt_caching)
