@@ -1,0 +1,14 @@
+<h1>Results for "{{idea}}" :</h1>
+Marque : <br>
+<div data-ng-show="available">Dispo</div>
+<div data-ng-hide="available">Non Dispo</div>
+<div>
+    <ul>
+        <li data-ng-repeat="domain in domains">
+            {{domain.name}} /
+            <span data-ng-show="domain.available">Dispo</span>
+            <span data-ng-hide="domain.available">Non dispo</span>
+        </li>
+    </ul>
+</div>
+<a href="#/">Retour à la recherche</a>
