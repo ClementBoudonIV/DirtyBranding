@@ -14,7 +14,6 @@ DirtyBranding.controller('ResultsController',
 
             $scope.searchForm = SearchFactory.get();
 
-
             angular.forEach($scope.searchForm.ideas, function(idea, idea_key) {
                 //pour chaque idée soumise
                 //on crée un objet pour chaque idée
