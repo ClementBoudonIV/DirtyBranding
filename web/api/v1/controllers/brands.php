@@ -1,7 +1,7 @@
 <?php
 
 	$brands = $app['controllers_factory'];
-	
+
     /*
     GET /brands/{brand}/alternatives?separators[]=
     A partir d'un nom de marque et optionnelement de séparateur,
@@ -41,11 +41,19 @@
 
             //Gestion des remplacements
             foreach ($array_separators as $separator) {
-                $array_alternatives[] = str_replace(
+
+                $brand_replaced = str_replace(
                     ' ',
                     $separator,
                     $brand_escaped
                 );
+
+                if(!in_array($brand_replaced,$array_alternatives))
+                {
+                    $array_alternatives[] = $brand_replaced;
+                }
+
+
             }
 
             //Gestion de tous les remplacements
@@ -127,12 +135,12 @@
                     $stmt->bindValue("brand", '%'.$brand_escaped.'%');
                     $stmt->execute();
                     if($row = $stmt->fetch())
-                    {    
+                    {
                         $available = false;
                     }
                 }
             }
-       
+
             return json_encode($available);
     });
 

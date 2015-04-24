@@ -1,7 +1,18 @@
-DirtyBranding.controller('HomeController', ['$scope','$rootScope','$location','$routeParams', function ($scope, $rootScope, $location, $routeParams){
+DirtyBranding.controller('HomeController',
+    [
+        '$scope',
+        '$rootScope',
+        '$location',
+        '$routeParams',
+        'SearchFactory',
+        function ($scope, $rootScope, $location, $routeParams, SearchFactory){
 
-    $scope.search = function(){
-        $location.path("/results/"+$scope.search.idea);
-    };
+            $scope.searchForm = SearchFactory.get();
+
+            $scope.search = function(){
+                SearchFactory.save($scope.searchForm);
+                $location.path("/results/"+$scope.searchForm.ideas);
+            };
+
 
 }]);

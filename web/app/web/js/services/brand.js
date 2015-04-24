@@ -26,6 +26,16 @@ function($resource){
                     member:'available',
                     'ipoffices[]':'@ipoffices'
                 }
+            },
+            alternatives: {
+                method:'GET',
+                params:
+                {
+                    brand:'@brand',
+                    member:'alternatives',
+                    'separators[]': '@separators'
+                },
+                isArray:true
             }
         }
     );

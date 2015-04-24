@@ -1,14 +1,24 @@
-<h1>Results for "{{idea}}" :</h1>
-Marque : <br>
-<div data-ng-show="available">Dispo</div>
-<div data-ng-hide="available">Non Dispo</div>
-<div>
-    <ul>
-        <li data-ng-repeat="domain in domains">
-            {{domain.name}} /
-            <span data-ng-show="domain.available">Dispo</span>
-            <span data-ng-hide="domain.available">Non dispo</span>
-        </li>
-    </ul>
-</div>
+<section data-ng-repeat="idea in ideas">
+    <h2>Results for idea "{{idea.name}}" :</h2>
+    <section data-ng-repeat="brand in idea.brands">
+        <h3>Brand "{{brand.main_name}}"</h3>
+        <section data-ng-repeat="possible_name in brand.possible_names">
+            <h4>
+                {{possible_name.name}}
+                (
+                    <span data-ng-show="possible_name.available">OK</span>
+                    <span data-ng-hide="possible_name.available">NOK</span>
+                )
+            </h4>
+            <ul>
+                <li data-ng-repeat="domain in possible_name.domains">
+                    {{domain.name}} /
+                    <span data-ng-show="domain.available">OK</span>
+                    <span data-ng-hide="domain.available">NOK</span>
+                </li>
+            </ul>
+        </section>
+    </section>
+</section>
+<br>
 <a href="#/">Retour à la recherche</a>
