@@ -34,6 +34,9 @@ function(){
                     }
                 }
             }
+            for (i = 0; i < return_array.length; i++) {
+                return_array[i] = return_array[i].trim();
+            }
             return return_array;
         }
    };

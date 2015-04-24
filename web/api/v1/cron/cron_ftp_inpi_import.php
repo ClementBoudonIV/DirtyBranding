@@ -19,7 +19,7 @@
     $time_file = mktime(0,0,0,date("m"),date('d'),date('Y'));
 
     $today_date = date('Ymd',$time_file);
-  
+
     $xml_inpi_folder  = __DIR__.'/../../../../Ressources/INPI/XML/';
 
     //INPI FTP Connexion
@@ -28,7 +28,7 @@
     $ftp_user_pass = '';
 
     $local_zip_file = $xml_inpi_folder.$today_date.'.zip';
-    
+
     $remote_zip_file = 'FR_FRST66_'.date('Y-W',$time_file).'.zip';
 
     $local_xml_filename = 'FR_FRNEWST66_'.date('Y-W',$time_file).'.xml';
@@ -40,7 +40,7 @@
     ftp_close($conn_id);
 
     //Unzip it
-    $zip = new ZipArchive(); 
+    $zip = new ZipArchive();
     $zip->open($local_zip_file);
     $zip->extractTo($xml_inpi_folder,array($local_xml_filename));
     $zip->close();
