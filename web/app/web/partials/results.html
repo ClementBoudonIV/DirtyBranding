@@ -18,15 +18,20 @@
                 <div class="col-md-12" >
                     <div class="row">
                         <div class="col-md-10" >
-                            <h2>{{brand.main_name}}</h2>
+                            <h2>{{brand.main_name}}  {{brand.show_details}}</h2>
                         </div>
                         <div class="col-md-2" >
                             <h2>
-                                <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                                <a data-ng-click="brand.show_details = { true: false, false:true}[brand.show_details]" href="">
+                                    <span
+                                    class="glyphicon"
+                                    data-ng-class="brand.show_details ? 'glyphicon-chevron-up' : 'glyphicon-chevron-right'"
+                                     aria-hidden="true"></span>
+                                 </a>
                             </h2>
                         </div>
                     </div>
-                    <div class="row" data-ng-repeat="possible_name in brand.possible_names">
+                    <div class="row" data-ng-repeat="possible_name in brand.possible_names" data-ng-show="brand.show_details">
                         <div class="col-md-11 col-md-offset-1" >
                             <div class="row">
                                 <div class="col-md-10" >

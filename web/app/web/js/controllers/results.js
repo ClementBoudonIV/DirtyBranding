@@ -12,6 +12,8 @@ DirtyBranding.controller('ResultsController',
 
             $scope.ideas = [];
 
+            $scope.first_brand = true; //permet de déplier la première marque présentée
+
             $scope.searchForm = SearchFactory.get();
 
             angular.forEach($scope.searchForm.ideas, function(idea, idea_key) {
@@ -20,7 +22,8 @@ DirtyBranding.controller('ResultsController',
                 $scope
                 .ideas[idea_key] = {
                     name: idea,
-                    brands: []
+                    brands: [],
+                    show_details: false
                 };
 
 
@@ -48,8 +51,10 @@ DirtyBranding.controller('ResultsController',
                         .ideas[idea_key]
                         .brands[brand_key] = {
                             main_name: brand,
-                            possible_names: []
+                            possible_names: [],
+                            show_details: $scope.first_brand
                         }
+                        $scope.first_brand = false;
 
 
 
@@ -76,7 +81,8 @@ DirtyBranding.controller('ResultsController',
                                 .possible_names[possible_key] = {
                                     name: alternative,
                                     available: false,
-                                    domains: []
+                                    domains: [],
+                                    show_details: false
                                 }
 
                                 //on Check la dispo de la marque, les bureaux de PI sont en dur
