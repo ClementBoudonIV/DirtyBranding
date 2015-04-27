@@ -1,189 +1,190 @@
-<div class="row">
-    <div class="col-md-4  col-md-offset-4 text-center">
-        <h1>DirtyBranding</h1>
-    </div>
-</div>
 <form data-ng-submit="search()" class="form-group">
-    <input type="hidden" data-ng-model="searchForm.prefixes_inline" data-ng-change="change()" placeholder="Prefixes">
-    <input type="hidden" data-ng-model="searchForm.ideas_inline" data-ng-change="change()" placeholder="Votre idée">
-    <input type="hidden" data-ng-model="searchForm.suffixes_inline" data-ng-change="change()" placeholder="Suffixes">
-    <input type="hidden" data-ng-model="searchForm.extensions_inline" data-ng-change="change()" placeholder="Extensions">
-
     <div class="row">
         <div class="col-md-3">
-            <div class="input-group col-md-6">
-                <input
-                    type="text"
-                    placeholder="Prefix"
-                    class="form-control"
-                    id="newPrefixInput">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    </button>
-                </span>
-            </div>
+            <div class="pull-right">
+                <div class="col-md-6 input-group form-group-lg">
+                    <input
+                        type="text"
+                        placeholder="Prefix"
+                        class="form-control"
+                        id="newPrefixInput"
+                        data-ng-model="new_prefixes">
+                    <span class="input-group-btn btn-group-lg">
+                        <button class="btn btn-default" type="button">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true" data-ng-click="addElmt('prefixes')"></span>
+                        </button>
+                    </span>
+                </div>
 
-            <div class="btn-group" role="group">
-                <button class="btn btn-info" disabled="disabled">
-                    My
-                </button>
-                <button class="btn btn-info">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </button>
-            </div>
-            <br>
-            <div class="btn-group" role="group">
-                <button class="btn btn-default" disabled="disabled">
-                    Captain
-                </button>
-                <button class="btn btn-default">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </button>
+                <div data-ng-repeat="prefixe in searchForm.prefixes">
+                    <div class="btn-group btn-group-lg" role="group">
+                        <button class="btn" data-ng-class="$index==0 ? 'btn-info' : 'btn-default'" disabled="disabled" type="button">
+                            {{prefixe}}
+                        </button>
+                        <button class="btn" data-ng-class="$index==0 ? 'btn-info' : 'btn-default'" type="button">
+                            <span class="glyphicon glyphicon-remove" data-ng-click="removeIndex($index,'prefixes')"></span>
+                        </button>
+                    </div>
+                    <br>
+                </div>
+
+
             </div>
         </div>
 
         <div class="col-md-6">
-            <div class="input-group form-group-lg">
-                <input
-                    type="text"
-                    data-ng-model="searchForm.ideas_inline"
-                    data-ng-change="change()"
-                    placeholder="Votre idée"
-                    class="form-control" >
-                <span class="input-group-btn btn-group-lg">
-                    <button class="btn btn-default" type="submit">
-                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    </button>
-                    <button class="btn btn-default btn-info" type="button">
-                        <!-- <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> -->
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    </button>
-                </span>
+
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1>DirtyBranding</h1>
+                </div>
             </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                      <div class="input-group form-group-lg">
+                        <input
+                            type="text"
+                            data-ng-model="searchForm.ideas_inline"
+                            data-ng-change="change()"
+                            placeholder="Votre idée"
+                            class="form-control" >
+                        <span class="input-group-btn btn-group-lg">
+                            <button class="btn btn-default" type="submit">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            </button>
+                            <button class="btn btn-default btn-info" type="button">
+                                <!-- <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> -->
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>
+                        </span>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="form-group">
+
+                        <label for="newExtensionInput">
+                            Plus d'extensions<br>
+
+                            <div class="btn-group btn-group-sm" role="group" data-ng-repeat="extension in searchForm.extensions">
+                                <button class="btn btn-primary" disabled="disabled" type="button">
+                                    .{{extension}}
+                                </button>
+                                <button class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-remove" data-ng-click="removeIndex($index,'extensions');" type="button"></span>
+                                </button>
+                            </div>
+
+
+                        </label>
+
+                        <div class="input-group col-md-3">
+                            <input
+                                type="text"
+                                placeholder="chat"
+                                class="form-control"
+                                id="newExtensionInput"
+                                data-ng-model="new_extensions">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" type="button">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true" data-ng-click="addElmt('extensions')"></span>
+                                </button>
+                            </span>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">
+
+                            Bureau de propri&eacute;t&eacute; intellectuelle<br>
+
+                            <div class="btn-group btn-group-sm" role="group"  data-ng-repeat="ipoffice in searchForm.ipoffices">
+                                <button class="btn btn-primary" disabled="disabled" type="button">
+                                    {{ipoffice}}
+                                </button>
+                                <button class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-remove" data-ng-click="removeIndex($index,'ipoffices')"></span>
+                                </button>
+                            </div>
+
+                        </label>
+                        <div class="dropdown">
+                            <button id="dLabel" class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="button">
+                                Ajouter un bureau
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+
+                                <li data-ng-repeat="available_ipoffice in searchForm.available_ipoffices">
+                                <a>{{available_ipoffice}}</a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+
+                        <label for="newExtensionInput">Separateurs : </label>
+
+                        <input type="text" data-ng-model="searchForm.separators_inline" data-ng-change="change()" placeholder="Separators" class="form-control" >
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
         </div>
 
         <div class="col-md-3">
-            <div class="input-group col-md-6">
+            <div class="input-group form-group-lg col-md-6">
                 <input
                     type="text"
                     placeholder="Suffixe"
                     class="form-control"
-                    id="newSuffixeInput">
-                <span class="input-group-btn">
+                    id="newSuffixeInput"
+                    data-ng-model="new_suffixes">
+                <span class="input-group-btn btn-group-lg">
                     <button class="btn btn-default" type="button">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true" data-ng-click="addElmt('suffixes')"></span>
                     </button>
                 </span>
             </div>
 
-            <div class="btn-group" role="group">
-                <button class="btn btn-info" disabled="disabled">
-                    Pay
-                </button>
-                <button class="btn btn-info">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </button>
-            </div>
-            <br>
-
-            <div class="btn-group" role="group">
-                <button class="btn btn-default" disabled="disabled">
-                    Payment
-                </button>
-                <button class="btn btn-default">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </button>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="row">
-        <div class="col-md-3 col-md-offset-3">
-
-            <div class="form-group">
-
-                <label for="newExtensionInput">
-                    Plus d'extensions<br>
-
-                    <div class="btn-group btn-group-sm" role="group">
-                        <button class="btn btn-primary" disabled="disabled">
-                            .com
-                        </button>
-                        <button class="btn btn-primary">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </button>
-                    </div>
-
-                    <div class="btn-group btn-group-sm" role="group">
-                        <button class="btn btn-primary" disabled="disabled">
-                            .fr
-                        </button>
-                        <button class="btn btn-primary">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </button>
-                    </div>
-
-                </label>
-
-                <div class="input-group col-md-3">
-                    <input
-                        type="text"
-                        placeholder=".chat"
-                        class="form-control"
-                        id="newExtensionInput">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                        </button>
-                    </span>
-
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="form-group">
-                <label for="">
-
-                    Bureau de propri&eacute;t&eacute; intellectuelle<br>
-
-                    <div class="btn-group btn-group-sm" role="group">
-                        <button class="btn btn-primary" disabled="disabled">
-                            INPI
-                        </button>
-                        <button class="btn btn-primary">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </button>
-                    </div>
-
-                </label>
-                <div class="dropdown">
-                    <button id="dLabel" class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Ajouter un bureau
-                        <span class="caret"></span>
+            <div data-ng-repeat="suffixe in searchForm.suffixes">
+                <div class="btn-group btn-group-lg" role="group">
+                    <button class="btn" data-ng-class="$index==0 ? 'btn-info' : 'btn-default'"  disabled="disabled" type="button">
+                        {{suffixe}}
                     </button>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                        <li><a>INPI, France</a></li>
-                        <li><a>ONPI, Europe</a></li>
-                        <li><a>PI Office, USA</a></li>
-                    </ul>
+                    <button class="btn" data-ng-class="$index==0 ? 'btn-info' : 'btn-default'" type="button">
+                        <span class="glyphicon glyphicon-remove" data-ng-click="removeIndex($index,'suffixes')"></span>
+                    </button>
                 </div>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-3 col-md-offset-3">
-            <div class="form-group">
-
-                <label for="newExtensionInput">Separateurs : </label>
-
-                <input type="text" data-ng-model="searchForm.separators_inline" data-ng-change="change()" placeholder="Separators" class="form-control" >
+                <br>
             </div>
 
 
+
         </div>
+
     </div>
+
+
 </form>

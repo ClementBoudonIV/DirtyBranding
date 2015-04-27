@@ -82,7 +82,7 @@ DirtyBranding.controller('ResultsController',
                                 //on Check la dispo de la marque, les bureaux de PI sont en dur
                                 Brand.available({
                                     brand: $scope.ideas[idea_key].brands[brand_key].possible_names[possible_key].name,
-                                    'ipoffices[]':['inpi']
+                                    'ipoffices[]':$scope.searchForm.ipoffices
                                 },function(brand_alternative_available) {
 
                                     //Cast ngRessource data to bool

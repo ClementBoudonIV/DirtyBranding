@@ -9,168 +9,55 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row" >
     <div class="col-md-10 col-md-offset-2" >
 
-        <div class="row">
-            <div class="col-md-12" >
-                <div class="row">
-                    <div class="col-md-10" >
-                        <h2>My Safe Pay</h2>
-                    </div>
-                    <div class="col-md-2" >
-                        <h2>
-                            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-                        </h2>
-                    </div>
-                </div>
+        <div  data-ng-repeat="idea in ideas">
 
-                <div class="row">
-                    <div class="col-md-9 col-md-offset-1" >
-                        <h2>My Safe Pay</h2>
-                    </div>
-                    <div class="col-md-2" >
-                        <h2>
-                            <span class="text-info glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                        </h2>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-11 col-md-offset-1" >
-                        <div class="row">
-                            <div class="col-md-10" >
-                                <h2>MySafePay</h2>
-                            </div>
-                            <div class="col-md-2" >
-                                <h2>
-                                    <span class="text-info glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                                </h2>
-                            </div>
+            <div class="row" data-ng-repeat="brand in idea.brands">
+                <div class="col-md-12" >
+                    <div class="row">
+                        <div class="col-md-10" >
+                            <h2>{{brand.main_name}}</h2>
                         </div>
+                        <div class="col-md-2" >
+                            <h2>
+                                <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row" data-ng-repeat="possible_name in brand.possible_names">
+                        <div class="col-md-11 col-md-offset-1" >
+                            <div class="row">
+                                <div class="col-md-10" >
+                                    <h2>{{possible_name.name}}</h2>
+                                </div>
+                                <div class="col-md-2" >
+                                    <h2>
+                                        <span data-ng-class="possible_name.available ? 'text-info' : 'text-warning'" class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                                    </h2>
+                                </div>
+                            </div>
 
-                        <div class="row">
-                            <div class="col-md-11 col-md-offset-1" >
-                                <div class="row">
-                                    <div class="col-md-10" >
-                                        <h2>mysafepay.com</h2>
-                                    </div>
-                                    <div class="col-md-2" >
-                                        <h2>
-                                            <span class="text-success glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-                                        </h2>
+                            <div class="row">
+                                <div class="col-md-11 col-md-offset-1">
+                                    <div class="row" data-ng-repeat="domain in possible_name.domains" >
+                                        <div class="col-md-10" >
+                                            <h2>{{domain.name}}</h2>
+                                        </div>
+                                        <div class="col-md-2" >
+                                            <h2>
+                                                <span data-ng-class="domain.available ? 'text-success glyphicon glyphicon-ok-sign' : 'text-danger glyphicon glyphicon-remove-sign'" aria-hidden="true"></span>
+                                            </h2>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-10" >
-                                        <h2>mysafepay.fr</h2>
-                                    </div>
-                                    <div class="col-md-2" >
-                                        <h2>
-                                            <span class="text-alert glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
-                                        </h2>
-                                    </div>
-                                </div>
-
-
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-md-11 col-md-offset-1" >
-                        <div class="row">
-                            <div class="col-md-10" >
-                                <h2>My-Safe-Pay</h2>
-                            </div>
-                            <div class="col-md-2" >
-                                <h2>
-                                    <span class="text-warning glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                                </h2>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-11 col-md-offset-1" >
-                                <div class="row">
-                                    <div class="col-md-10" >
-                                        <h2>my-safe-pay.com</h2>
-                                    </div>
-                                    <div class="col-md-2" >
-                                        <h2>
-                                            <span class="text-success glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-                                        </h2>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-10" >
-                                        <h2>my-safe-pay.fr</h2>
-                                    </div>
-                                    <div class="col-md-2" >
-                                        <h2>
-                                            <span class="text-success glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-                                        </h2>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                </div>
             </div>
         </div>
-
-
-        <div class="row">
-            <div class="col-md-12" >
-                <div class="row">
-                    <div class="col-md-10" >
-                        <h3>Safe Pay</h3>
-                    </div>
-                    <div class="col-md-2" >
-                        <h3>
-                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                        </h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12" >
-                <div class="row">
-                    <div class="col-md-10" >
-                        <h3>Safe Payment</h3>
-                    </div>
-                    <div class="col-md-2" >
-                        <h3>
-                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                        </h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12" >
-                <div class="row">
-                    <div class="col-md-10" >
-                        <h4>Safe</h4>
-                    </div>
-                    <div class="col-md-2" >
-                        <h4>
-                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                        </h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>
 
@@ -200,4 +87,4 @@
     </section>
 </section>
 <br>
-Retour à la recherche</a>
+

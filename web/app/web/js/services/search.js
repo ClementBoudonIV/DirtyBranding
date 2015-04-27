@@ -2,16 +2,19 @@ DirtyBranding.factory('SearchFactory', [
 function(){
    var factory = {
         search: {
-            ideas:['safe'],
-            prefixes:[],
-            suffixes:[],
+            ideas:['safe','secure'],
+            prefixes:['My','Captain'],
+            suffixes:['Pay', 'Payment'],
             separators:[],
-            extensions:['com'],
+            extensions:['com','fr'],
+            ipoffices:['inpi'],
+            available_ipoffices:['inpi'],
             ideas_inline:'',
             prefixes_inline:'',
             suffixes_inline:'',
             separators_inline:'',
             extensions_inline:'',
+            ipoffices_inline:''
         },
         save: function(searchForm){
 
@@ -22,6 +25,7 @@ function(){
             factory.search.suffixes = factory.searchstringToArray(searchForm.suffixes_inline);
             factory.search.separators = factory.searchstringToArray(searchForm.separators_inline);
             factory.search.extensions = factory.searchstringToArray(searchForm.extensions_inline);
+            factory.search.ipoffices = factory.searchstringToArray(searchForm.ipoffices_inline);
         },
         get: function(){
 
@@ -30,6 +34,7 @@ function(){
             factory.search.suffixes_inline = factory.searcharrayToString(factory.search.suffixes);
             factory.search.separators_inline = factory.searcharrayToString(factory.search.separators);
             factory.search.extensions_inline = factory.searcharrayToString(factory.search.extensions);
+            factory.search.ipoffices_inline = factory.searcharrayToString(factory.search.ipoffices);
 
             return factory.search;
         },
@@ -39,10 +44,11 @@ function(){
             //Doit être tenu à jour en fonction des champs présentés (et ça c'est moche)
             //Champs public (inline ou array) vers champs non public (array ou inline)
             factory.search.ideas = factory.searchstringToArray(searchForm.ideas_inline);
-            factory.search.prefixes = factory.searchstringToArray(searchForm.prefixes_inline);
-            factory.search.suffixes = factory.searchstringToArray(searchForm.suffixes_inline);
+            factory.search.prefixes_inline = factory.searchstringToArray(searchForm.prefixes);
+            factory.search.suffixes_inline = factory.searchstringToArray(searchForm.suffixes);
             factory.search.separators = factory.searchstringToArray(searchForm.separators_inline);
-            factory.search.extensions = factory.searchstringToArray(searchForm.extensions_inline);
+            factory.search.extensions_inline = factory.searchstringToArray(searchForm.extensions);
+            factory.search.ipoffices_inline = factory.searchstringToArray(searchForm.ipoffices);
 
         },
         searchstringToArray: function(search_string){
