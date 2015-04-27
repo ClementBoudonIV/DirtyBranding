@@ -2,11 +2,11 @@ DirtyBranding.factory('SearchFactory', [
 function(){
    var factory = {
         search: {
-            ideas:['safe','secure'],
-            prefixes:['My','Captain'],
-            suffixes:['Pay', 'Payment'],
+            ideas:[],
+            prefixes:[],
+            suffixes:[],
             separators:[],
-            extensions:['com','fr'],
+            extensions:['com'],
             ipoffices:['inpi'],
             available_ipoffices:['inpi'],
             ideas_inline:'',
