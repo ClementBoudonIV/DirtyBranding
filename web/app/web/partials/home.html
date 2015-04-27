@@ -10,8 +10,8 @@
                         id="newPrefixInput"
                         data-ng-model="new_prefixes">
                     <span class="input-group-btn btn-group-lg">
-                        <button class="btn btn-default" type="button">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true" data-ng-click="addElmt('prefixes')"></span>
+                        <button class="btn btn-default" type="button" data-ng-click="addElmt('prefixes')">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         </button>
                     </span>
                 </div>
@@ -21,8 +21,8 @@
                         <button class="btn" data-ng-class="$index==0 ? 'btn-info' : 'btn-default'" disabled="disabled" type="button">
                             {{prefixe}}
                         </button>
-                        <button class="btn" data-ng-class="$index==0 ? 'btn-info' : 'btn-default'" type="button">
-                            <span class="glyphicon glyphicon-remove" data-ng-click="removeIndex($index,'prefixes')"></span>
+                        <button class="btn" data-ng-class="$index==0 ? 'btn-info' : 'btn-default'" type="button" data-ng-click="removeIndex($index,'prefixes')">
+                            <span class="glyphicon glyphicon-remove"></span>
                         </button>
                     </div>
                     <br>
@@ -51,8 +51,9 @@
                             <button class="btn btn-default" type="submit">
                                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                             </button>
-                            <button class="btn btn-default btn-info" type="button" data-ng-show="visibleOptionBtn">
-                                <span class="glyphicon" data-ng-class="visibleOptionPanel ? 'glyphicon-remove' : 'glyphicon-plus'" data-ng-click="visibleOptionPanel = { true: false, false:true}[visibleOptionPanel]" aria-hidden="true"></span>
+                            <button class="btn btn-default btn-info" type="button" data-ng-show="visibleOptionBtn"
+                            data-ng-click="visibleOptionPanel = { true: false, false:true}[visibleOptionPanel]" >
+                                <span class="glyphicon" data-ng-class="visibleOptionPanel ? 'glyphicon-remove' : 'glyphicon-plus'" aria-hidden="true"></span>
                             </button>
                         </span>
                     </div>
@@ -77,8 +78,8 @@
                                     <button class="btn btn-primary" disabled="disabled" type="button">
                                         .{{extension}}
                                     </button>
-                                    <button class="btn btn-primary">
-                                        <span class="glyphicon glyphicon-remove" data-ng-click="removeIndex($index,'extensions');" type="button"></span>
+                                    <button class="btn btn-primary" data-ng-click="removeIndex($index,'extensions');">
+                                        <span class="glyphicon glyphicon-remove" type="button"></span>
                                     </button>
                                 </div>
 
@@ -93,8 +94,8 @@
                                     id="newExtensionInput"
                                     data-ng-model="new_extensions">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button" type="button">
-                                        <span class="glyphicon glyphicon-plus" aria-hidden="true" data-ng-click="addElmt('extensions')"></span>
+                                    <button class="btn btn-default" type="button" type="button" data-ng-click="addElmt('extensions')">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                     </button>
                                 </span>
 
@@ -111,8 +112,8 @@
                                     <button class="btn btn-primary" disabled="disabled" type="button">
                                         {{ipoffice}}
                                     </button>
-                                    <button class="btn btn-primary">
-                                        <span class="glyphicon glyphicon-remove" data-ng-click="removeIndex($index,'ipoffices')"></span>
+                                    <button class="btn btn-primary" data-ng-click="removeIndex($index,'ipoffices')">
+                                        <span class="glyphicon glyphicon-remove"></span>
                                     </button>
                                 </div>
 
@@ -163,8 +164,8 @@
                         id="newSuffixeInput"
                         data-ng-model="new_suffixes">
                     <span class="input-group-btn btn-group-lg">
-                        <button class="btn btn-default" type="button">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true" data-ng-click="addElmt('suffixes')"></span>
+                        <button class="btn btn-default" type="button" data-ng-click="addElmt('suffixes')">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         </button>
                     </span>
                 </div>
@@ -174,8 +175,8 @@
                         <button class="btn" data-ng-class="$index==0 ? 'btn-info' : 'btn-default'"  disabled="disabled" type="button">
                             {{suffixe}}
                         </button>
-                        <button class="btn" data-ng-class="$index==0 ? 'btn-info' : 'btn-default'" type="button">
-                            <span class="glyphicon glyphicon-remove" data-ng-click="removeIndex($index,'suffixes')"></span>
+                        <button class="btn" data-ng-class="$index==0 ? 'btn-info' : 'btn-default'" type="button" data-ng-click="removeIndex($index,'suffixes')">
+                            <span class="glyphicon glyphicon-remove"></span>
                         </button>
                     </div>
                     <br>
