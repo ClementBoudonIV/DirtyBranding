@@ -1,4 +1,4 @@
-var DirtyBranding = angular.module('DirtyBranding',['ngRoute','ngResource']);
+var DirtyBranding = angular.module('DirtyBranding',['ngRoute','ngResource','ui.keypress','ui.select', 'ngSanitize']);
 
 DirtyBranding.config(['$routeProvider', function($routeProvider){
     $routeProvider

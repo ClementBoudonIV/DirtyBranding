@@ -8,13 +8,27 @@ function(){
             separators:[],
             extensions:['com'],
             ipoffices:['inpi'],
-            available_ipoffices:['inpi'],
+            available_ipoffices:[
+                {
+                    name:'inpi',
+                    geo:'France'
+                },
+                {
+                    name:'obpi',
+                    geo:'Europe'
+                },
+                {
+                    name:'uspi',
+                    geo:'USA'
+                }],
             ideas_inline:'',
             prefixes_inline:'',
             suffixes_inline:'',
             separators_inline:'',
             extensions_inline:'',
-            ipoffices_inline:''
+            ipoffices_inline:'',
+            visibleOptionPanel: false,
+            visibleOptionBtn: false
         },
         save: function(searchForm){
 
@@ -26,6 +40,9 @@ function(){
             factory.search.separators = factory.searchstringToArray(searchForm.separators_inline);
             factory.search.extensions = factory.searchstringToArray(searchForm.extensions_inline);
             factory.search.ipoffices = factory.searchstringToArray(searchForm.ipoffices_inline);
+
+            factory.search.visibleOptionPanel = searchForm.visibleOptionPanel;
+            factory.search.visibleOptionBtn = searchForm.visibleOptionBtn;
         },
         get: function(){
 

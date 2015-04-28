@@ -1,17 +1,19 @@
-<form data-ng-submit="search()" class="form-group">
+<form class="form-group">
     <div class="row">
         <div class="col-md-3">
-            <div data-ng-show="visibleOptionPanel">
+            <div data-ng-show="searchForm.visibleOptionPanel">
                 <div class="col-md-6 input-group form-group-lg">
                     <input
                         type="text"
                         placeholder="Prefix"
                         class="form-control"
                         id="newPrefixInput"
-                        data-ng-model="new_prefixes">
+                        data-ng-model="new_prefixes"
+                        data-ui-keyup="{'enter alt-space':' searchAddElmt(\'prefixes\')','ctrl-enter':' searchSubmit()'}"
+                        tabindex=5>
                     <span class="input-group-btn btn-group-lg">
-                        <button class="btn btn-default" type="button" data-ng-click="addElmt('prefixes')">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        <button class="btn btn-default" type="button" data-ng-click="searchAddElmt('prefixes')">
+                            <span class="glyphicon glyphicon-plus"></span>
                         </button>
                     </span>
                 </div>
@@ -21,7 +23,7 @@
                         <button class="btn" data-ng-class="$index==0 ? 'btn-info' : 'btn-default'" disabled="disabled" type="button">
                             {{prefixe}}
                         </button>
-                        <button class="btn" data-ng-class="$index==0 ? 'btn-info' : 'btn-default'" type="button" data-ng-click="removeIndex($index,'prefixes')">
+                        <button class="btn" data-ng-class="$index==0 ? 'btn-info' : 'btn-default'" data-ng-attr-id="{{'remove_prefixes_'+$index}}" type="button" data-ng-click="searchRemoveIndex($index,'prefixes')">
                             <span class="glyphicon glyphicon-remove"></span>
                         </button>
                     </div>
@@ -44,16 +46,19 @@
                         <input
                             type="text"
                             data-ng-model="searchForm.ideas_inline"
-                            data-ng-change="changeIdea()"
+                            data-ng-change="searchChangeIdea()"
                             placeholder="Votre idée"
-                            class="form-control" >
+                            class="form-control"
+                            data-ui-keyup="{'enter alt-space ctrl-enter':'searchSubmit()'}"
+                            tabindex=1
+                            id="newIdeasInput">
                         <span class="input-group-btn btn-group-lg">
-                            <button class="btn btn-default" type="submit">
-                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <button class="btn btn-default" type="button" data-ng-click="searchSubmit()" tabindex=2>
+                                <span class="glyphicon glyphicon-chevron-right" ></span>
                             </button>
-                            <button class="btn btn-default btn-info" type="button" data-ng-show="visibleOptionBtn"
-                            data-ng-click="visibleOptionPanel = { true: false, false:true}[visibleOptionPanel]" >
-                                <span class="glyphicon" data-ng-class="visibleOptionPanel ? 'glyphicon-remove' : 'glyphicon-plus'" aria-hidden="true"></span>
+                            <button class="btn btn-default btn-info" type="button" data-ng-show="searchForm.visibleOptionBtn"
+                            data-ng-click="searchForm.visibleOptionPanel = !searchForm.visibleOptionPanel" tabindex=3>
+                                <span class="glyphicon" data-ng-class="searchForm.visibleOptionPanel ? 'glyphicon-remove' : 'glyphicon-plus'"></span>
                             </button>
                         </span>
                     </div>
@@ -63,7 +68,7 @@
 
             </div>
 
-            <div  data-ng-show="visibleOptionPanel">
+            <div data-ng-show="searchForm.visibleOptionPanel">
 
 
                 <div class="row">
@@ -78,7 +83,7 @@
                                     <button class="btn btn-primary" disabled="disabled" type="button">
                                         .{{extension}}
                                     </button>
-                                    <button class="btn btn-primary" data-ng-click="removeIndex($index,'extensions');">
+                                    <button class="btn btn-primary" data-ng-attr-id="{{'remove_extensions_'+$index}}" data-ng-click="searchRemoveIndex($index,'extensions');">
                                         <span class="glyphicon glyphicon-remove" type="button"></span>
                                     </button>
                                 </div>
@@ -92,10 +97,12 @@
                                     placeholder="chat"
                                     class="form-control"
                                     id="newExtensionInput"
-                                    data-ng-model="new_extensions">
+                                    data-ng-model="new_extensions"
+                                    data-ui-keyup="{'enter alt-space':' searchAddElmt(\'extensions\')','ctrl-enter':' searchSubmit()'}"
+                                    tabindex=4>
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button" type="button" data-ng-click="addElmt('extensions')">
-                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                    <button class="btn btn-default" type="button" type="button" data-ng-click="searchAddElmt('extensions')">
+                                        <span class="glyphicon glyphicon-plus"></span>
                                     </button>
                                 </span>
 
@@ -108,29 +115,57 @@
 
                                 Bureau de propri&eacute;t&eacute; intellectuelle<br>
 
-                                <div class="btn-group btn-group-sm" role="group"  data-ng-repeat="ipoffice in searchForm.ipoffices">
+                                <!-- <div class="btn-group btn-group-sm" role="group"  data-ng-repeat="ipoffice in searchForm.ipoffices">
                                     <button class="btn btn-primary" disabled="disabled" type="button">
                                         {{ipoffice}}
                                     </button>
-                                    <button class="btn btn-primary" data-ng-click="removeIndex($index,'ipoffices')">
+                                    <button class="btn btn-primary" data-ng-attr-id="{{'remove_ipoffices_'+$index}}" data-ng-click="searchRemoveIndex($index,'ipoffices')">
                                         <span class="glyphicon glyphicon-remove"></span>
                                     </button>
-                                </div>
+                                </div> -->
 
                             </label>
-                            <div class="dropdown">
-                                <button id="dLabel" class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="button">
+
+                           <!--  <p>Selected: {{searchForm.ipoffices}}</p>
+                             <ui-select ng-model="searchForm.ipoffices" theme="select2" ng-disabled="disabled" style="min-width: 300px;">
+                               <ui-select-match placeholder="Ajouter un bureau">{{$select.selected.name}}</ui-select-match>
+                               <ui-select-choices repeat="available_ipoffice in searchForm.available_ipoffices | propsFilter: {name: $select.search, geo: $select.search}">
+                                 <div ng-bind-html="searchForm.ipoffices | highlight: $select.search"></div>
+                                 <small>
+                                   {{available_ipoffice.name}}
+                                   <span ng-bind-html="''+person.age | highlight: $select.search"></span>
+                                 </small>
+                               </ui-select-choices>
+                             </ui-select> -->
+
+                            <ui-select multiple ng-model="ipoffice_model.selected" on-select="selectIPOffice($item, $model)" on-remove="removeIPOffice($item, $model)">
+                                <ui-select-match placeholder="Ajouter un bureau">{{$item.name}}, {{$item.geo}}</ui-select-match>
+                                <ui-select-choices repeat="available_ipoffice in searchForm.available_ipoffices | filter: $select.search track by available_ipoffice.name">
+                                    <div ng-bind-html="available_ipoffice.name | highlight: $select.search"></div>
+                                    <div ng-bind-html="available_ipoffice.geo | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+
+                            <!-- <select  class="selectpicker show-tick" multiple data-live-search="true"  title="Ajouter un bureau">
+                                <option data-ng-repeat="available_ipoffice in searchForm.available_ipoffices">
+                                    {{available_ipoffice}}
+                                </option>
+                            </select> -->
+
+                            <!-- <div class="dropdown">
+                                <button id="dLabel" class="btn btn-default" type="button" data-toggle="dropdown"  type="button">
                                     Ajouter un bureau
                                     <span class="caret"></span>
                                 </button>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+
+                                <ul class="dropdown-menu" role="menu">
 
                                     <li data-ng-repeat="available_ipoffice in searchForm.available_ipoffices">
                                     <a>{{available_ipoffice}}</a>
                                     </li>
 
                                 </ul>
-                            </div>
+                            </div>-->
 
                         </div>
                     </div>
@@ -140,9 +175,17 @@
                     <div class="col-md-6">
                         <div class="form-group">
 
-                            <label for="newExtensionInput">Separateurs : </label>
+                            <label for="newSeparatorInput">Separateurs : </label>
 
-                            <input type="text" data-ng-model="searchForm.separators_inline" data-ng-change="change()" placeholder="Separators" class="form-control" >
+                            <input
+                                type="text"
+                                data-ng-model="searchForm.separators_inline"
+                                data-ng-change="searchChange()"
+                                placeholder="Separators"
+                                class="form-control"
+                                id="newSeparatorInput"
+                                data-ui-keyup="{'ctrl-enter':' searchSubmit()'}"
+                                tabindex=7>
                         </div>
 
 
@@ -155,17 +198,19 @@
         </div>
 
         <div class="col-md-3">
-            <div data-ng-show="visibleOptionPanel">
+            <div data-ng-show="searchForm.visibleOptionPanel">
                 <div class="input-group form-group-lg col-md-6">
                     <input
                         type="text"
                         placeholder="Suffixe"
                         class="form-control"
                         id="newSuffixeInput"
-                        data-ng-model="new_suffixes">
+                        data-ng-model="new_suffixes"
+                        data-ui-keyup="{'enter alt-space':' searchAddElmt(\'suffixes\')','ctrl-enter':' searchSubmit()'}"
+                        tabindex=6>
                     <span class="input-group-btn btn-group-lg">
-                        <button class="btn btn-default" type="button" data-ng-click="addElmt('suffixes')">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        <button class="btn btn-default" type="button" data-ng-click="searchAddElmt('suffixes')">
+                            <span class="glyphicon glyphicon-plus"></span>
                         </button>
                     </span>
                 </div>
@@ -175,7 +220,7 @@
                         <button class="btn" data-ng-class="$index==0 ? 'btn-info' : 'btn-default'"  disabled="disabled" type="button">
                             {{suffixe}}
                         </button>
-                        <button class="btn" data-ng-class="$index==0 ? 'btn-info' : 'btn-default'" type="button" data-ng-click="removeIndex($index,'suffixes')">
+                        <button class="btn" data-ng-class="$index==0 ? 'btn-info' : 'btn-default'" data-ng-attr-id="{{'remove_suffixes_'+$index}}" type="button" data-ng-click="searchRemoveIndex($index,'suffixes')">
                             <span class="glyphicon glyphicon-remove"></span>
                         </button>
                     </div>
