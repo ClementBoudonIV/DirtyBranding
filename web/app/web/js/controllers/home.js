@@ -11,14 +11,10 @@ DirtyBranding.controller('HomeController',
 
 
             $scope.selectIPOffice = function(item, model){
-                console.log('getIPOffice');
                 $scope.searchForm.ipoffices.unshift(item.name);
             };
             $scope.removeIPOffice = function(item, model){
-                console.log('removeIPOffice');
-                console.log(item);
                 var index = $scope.searchForm.ipoffices.indexOf(item.name);
-                console.log(index);
                 $scope.searchForm.ipoffices.splice(index,1);
                 $scope.searchChange();
             };
