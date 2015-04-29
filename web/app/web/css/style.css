@@ -26,7 +26,7 @@ a.res_brand:hover > h2{
 }
 
 
-/* Medium devices (desktops, 992px and up) */
+/* Medium devices and more (desktops, 992px and up) */
 @media (min-width: 992px) {
 
     .col-prefixes{
@@ -43,6 +43,10 @@ a.res_brand:hover > h2{
 
 /* Under Medium devices (tablettes, 992px and down) */
 @media (max-width: 992px) {
+
+    .head-app-dirtybranding{
+        margin-bottom: 10%;
+    }
 
     .col-prefixes{
         margin: 10px 0px;
