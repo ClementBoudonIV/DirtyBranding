@@ -2,8 +2,8 @@
 # vi: set ft=ruby :
 
 $script = <<SCRIPT
-cd /var/www/web/api/v1 && composer install
-cd /var/www/web/api/v1/cron && composer install
+cd /var/www/web/api/web/v1 && composer install
+cd /var/www/web/api/web/v1/cron && composer install
 sudo cp /var/www/vhost/*.conf /etc/apache2/sites-available/
 sudo cp /var/www/vhost/*.conf /etc/apache2/sites-enabled/
 sudo rm /etc/apache2/sites-available/000-default.conf
