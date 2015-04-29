@@ -1,0 +1,5 @@
+AuthName "This is the law"
+AuthUserFile /var/www/web/app/.htpasswd
+# AuthUserFile /home/dirtybrasv/app/.htpasswd
+AuthType Basic
+Require valid-user
