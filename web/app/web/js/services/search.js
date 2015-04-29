@@ -19,7 +19,7 @@ function(){
             separators_inline:'',
             extensions_inline:'',
             ipoffices_inline:'',
-            visibleOptionPanel: false,
+            visibleOptionPanel: true,
             visibleOptionBtn: true
         },
         save: function(searchForm){

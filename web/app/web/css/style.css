@@ -3,17 +3,6 @@
     margin-top: 10%;
 }
 
-.col-prefixes{
-    padding: 5px 0px;
-}
-.col-suffixes{
-      padding: 5px 0px;
-}
-
-.col-ps-nonempty{
-    margin-top: -52px;
-}
-
 .opt-down{
     margin-top: 2%;
 }
@@ -34,4 +23,41 @@ a.res_brand:hover{
 }
 a.res_brand:hover > h2{
     background-color: #EFEFEF;
+}
+
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+    .col-prefixes{
+        padding: 5px 0px;
+    }
+    .col-suffixes{
+        padding: 5px 0px;
+    }
+
+    .col-ps-nonempty{
+        margin-top: -52px;
+    }
+}
+
+/* Under Medium devices (tablettes, 992px and down) */
+@media (max-width: 992px) {
+
+    .col-prefixes{
+        margin: 10px 0px;
+        text-align: center;
+    }
+    .col-suffixes{
+        margin: 10px 0px;
+        text-align: center;
+    }
+
+    .col-ps{
+        margin: 20px 0px;
+    }
+
+    .col-ps-nonempty{
+        margin-top: 0px;
+    }
 }
