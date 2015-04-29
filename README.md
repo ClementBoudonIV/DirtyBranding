@@ -8,9 +8,22 @@
 - [nodejs](https://nodejs.org/) (+ `npm config set prefix /usr/local`)
 - [Bower](http://bower.io/)
 
-### Procédure
+### Puis :
+- Ajouter dans le fichier host local :
+
+| IP  | Host |
+| ------------- | ------------- |
+| 192.168.33.10  | api.dirtybranding.com  |
+| 192.168.33.10  | app.dirtybranding.com  |
+| 192.168.33.10  | www.dirtybranding.com  |
+| 192.168.33.10  | dirtybranding.com  |
 - `vagrant up`
-- [http://192.168.33.10/](http://192.168.33.10/)
+- `cd web/app/web`
+- `bower install`
+
+## Utilisation
+- `vagrant up` (si ce n'est déjà fait)
+- [http://app.dirtybranding.com](http://app.dirtybranding.com/)
 
 ## Database Access
 
@@ -24,5 +37,10 @@
 | SSH User  | vagrant  |
 | SSH Password  | vagrant  |
 
-- Importer `Database\*.sql`
+## Testing
+
+### API
+- `vagrant ssh`
+- Charger la base de données (Structure dans `/Database`)
+- phpunit -c web/api/web/v1/phpunit.xml.dist
 

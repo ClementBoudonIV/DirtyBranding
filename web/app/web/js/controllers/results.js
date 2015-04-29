@@ -10,6 +10,8 @@ DirtyBranding.controller('ResultsController',
         function ($scope, $rootScope, $routeParams, Domain, Brand, Idea, SearchFactory )
         {
 
+
+
             $scope.ideas = [];
 
             $scope.first_brand = true; //permet de déplier la première marque présentée
@@ -106,6 +108,10 @@ DirtyBranding.controller('ResultsController',
                                     .brands[brand_key]
                                     .possible_names[possible_key]
                                     .available = brand_alternative_available;
+
+                                    $(function () {
+                                      $('[data-toggle="tooltip"]').tooltip()
+                                    });
 
                                     //On récupère les domaines possibles pour la marque
                                     Brand.domains({

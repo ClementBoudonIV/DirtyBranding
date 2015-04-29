@@ -1,0 +1,37 @@
+.head-app-dirtybranding{
+
+    margin-top: 10%;
+}
+
+.col-prefixes{
+    padding: 5px 0px;
+}
+.col-suffixes{
+      padding: 5px 0px;
+}
+
+.col-ps-nonempty{
+    margin-top: -52px;
+}
+
+.opt-down{
+    margin-top: 2%;
+}
+
+.btn-group-extension{
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+a.res_brand{
+    color: #000;
+}
+a.res_brand > h2{
+    padding: 2px;
+}
+a.res_brand:hover{
+    text-decoration: none;
+}
+a.res_brand:hover > h2{
+    background-color: #EFEFEF;
+}

@@ -4,7 +4,13 @@
 $script = <<SCRIPT
 cd /var/www/web/api/v1 && composer install
 cd /var/www/web/api/v1/cron && composer install
-sudo sed -i 's#DocumentRoot /var/www/public#DocumentRoot /var/www/web#' /etc/apache2/sites-available/000-default.conf
+sudo cp /var/www/vhost/*.conf /etc/apache2/sites-available/
+sudo cp /var/www/vhost/*.conf /etc/apache2/sites-enabled/
+sudo rm /etc/apache2/sites-available/000-default.conf
+sudo rm /etc/apache2/sites-enabled/000-default.conf
+echo '127.0.0.1 api.dirtybranding.com' | sudo tee --append /etc/hosts > /dev/null
+echo '127.0.0.1 app.dirtybranding.com' | sudo tee --append /etc/hosts > /dev/null
+echo '127.0.0.1 www.dirtybranding.com' | sudo tee --append /etc/hosts > /dev/null
 sudo /etc/init.d/apache2 restart
 mysql -uroot -proot scotchbox < /var/www/Database/*.sql
 cd /var/www/

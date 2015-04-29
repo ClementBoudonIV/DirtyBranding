@@ -1,0 +1,4 @@
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^dirtybranding.com/$
+RewriteRule ^(.*) http://www.dirtybranding.com/$1 [QSA,L,R=301]

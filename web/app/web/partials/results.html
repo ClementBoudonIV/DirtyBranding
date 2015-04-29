@@ -1,61 +1,70 @@
 <div class="row">
-    <div class="col-md-2" >
+    <div class="col-md-12  text-center" >
         <h1>
-            <a href="#/"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
+            <a href="#/"  class="pull-left"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
+            DirtyBranding
         </h1>
-    </div>
-    <div class="col-md-4  col-md-offset-2 text-center">
-        <h1>DirtyBranding</h1>
     </div>
 </div>
 
 <div class="row" >
-    <div class="col-md-10 col-md-offset-2" >
-
+    <div class="col-md-6 col-md-offset-4" >
         <div  data-ng-repeat="idea in ideas">
-
             <div class="row" data-ng-repeat="brand in idea.brands">
                 <div class="col-md-12" >
                     <div class="row">
-                        <div class="col-md-10" >
-                            <h2>{{brand.main_name}}</h2>
-                        </div>
-                        <div class="col-md-2" >
-                            <h2>
-                                <a data-ng-click="brand.show_details = !brand.show_details" href="">
+                        <div class="col-md-12" >
+                            <a data-ng-click="brand.show_details = !brand.show_details" href="" class="res_brand">
+                                <h2 class="page-header">
+                                    {{brand.main_name}}
+
                                     <span
-                                    class="glyphicon"
+                                    class="glyphicon pull-right"
                                     data-ng-class="brand.show_details ? 'glyphicon-chevron-up' : 'glyphicon-chevron-right'"
                                      aria-hidden="true"></span>
-                                 </a>
-                            </h2>
+                                </h2>
+                            </a>
                         </div>
                     </div>
                     <div class="row" data-ng-repeat="possible_name in brand.possible_names" data-ng-show="brand.show_details">
                         <div class="col-md-11 col-md-offset-1" >
                             <div class="row">
-                                <div class="col-md-10" >
-                                    <h2>{{possible_name.name}}</h2>
-                                </div>
-                                <div class="col-md-2" >
-                                    <h2>
-                                        <span data-ng-class="possible_name.available ? 'text-info' : 'text-warning'" class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                                    </h2>
+                                <div class="col-md-12" >
+                                    <h3>
+                                        {{possible_name.name}}
+                                        <span
+                                        data-ng-if="possible_name.available"
+                                        class="glyphicon glyphicon-info-sign text-info"
+                                        aria-hidden="true"
+                                        data-toggle="tooltip"
+                                        data-placement="right"
+                                        title="Disponible chez {{searchForm.ipoffices[0]}}"
+                                        ></span>
+                                         <span
+                                        data-ng-if="!possible_name.available"
+                                        class="glyphicon glyphicon-info-sign text-warning"
+                                        aria-hidden="true"
+                                        data-toggle="tooltip"
+                                        data-placement="right"
+                                        title="Non disponible chez {{searchForm.ipoffices[0]}}"
+                                        ></span>
+                                    </h3>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-md-11 col-md-offset-1">
-                                    <div class="row" data-ng-repeat="domain in possible_name.domains" >
-                                        <div class="col-md-10" >
-                                            <h2>{{domain.name}}</h2>
-                                        </div>
-                                        <div class="col-md-2" >
-                                            <h2>
-                                                <span data-ng-class="domain.available ? 'text-success glyphicon glyphicon-ok-sign' : 'text-danger glyphicon glyphicon-remove-sign'" aria-hidden="true"></span>
-                                            </h2>
-                                        </div>
-                                    </div>
+                                <div class="col-md-4 col-md-offset-1">
+                                    <ul class="list-group">
+                                        <li data-ng-repeat="domain in possible_name.domains" class="list-group-item" data-ng-class="domain.available ? ' list-group-item-success' : ' list-group-item-danger'">
+                                            <p >
+                                                {{domain.name}}
+                                                <span
+                                                class="pull-right"
+                                                data-ng-class="domain.available ? 'glyphicon glyphicon-ok-sign' : 'glyphicon glyphicon-remove-sign'" aria-hidden="true"></span>
+                                            </p>
+                                        </li>
+                                    </ul>
+
                                 </div>
                             </div>
                         </div>

@@ -6,20 +6,12 @@ function(){
             prefixes:[],
             suffixes:[],
             separators:[],
-            extensions:['com'],
+            extensions:['com','fr'],
             ipoffices:['inpi'],
             available_ipoffices:[
                 {
                     name:'inpi',
                     geo:'France'
-                },
-                {
-                    name:'obpi',
-                    geo:'Europe'
-                },
-                {
-                    name:'uspi',
-                    geo:'USA'
                 }],
             ideas_inline:'',
             prefixes_inline:'',
@@ -28,7 +20,7 @@ function(){
             extensions_inline:'',
             ipoffices_inline:'',
             visibleOptionPanel: false,
-            visibleOptionBtn: false
+            visibleOptionBtn: true
         },
         save: function(searchForm){
 

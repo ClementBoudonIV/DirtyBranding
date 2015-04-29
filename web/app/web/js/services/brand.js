@@ -3,7 +3,7 @@ function($resource){
 
 
     return $resource(
-        '../../api/v1/brands/:brand/:member',
+        'http://api.dirtybranding.com/v1/brands/:brand/:member',
         {
             brand:'@brand'
         },

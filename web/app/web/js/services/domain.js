@@ -3,7 +3,7 @@ function($resource){
 
 
     return $resource(
-        '../../api/v1/domains/:domain/:member',
+        'http://api.dirtybranding.com/v1/domains/:domain/:member',
         {
             domain:'@domain'
         },

@@ -23,8 +23,8 @@ DirtyBranding.controller('HomeController',
                 if ($scope.searchForm.ideas_inline.length > 0){
                     $scope.searchForm.visibleOptionBtn = true;
                 }else{
-                    $scope.searchForm.visibleOptionPanel = false;
-                    $scope.searchForm.visibleOptionBtn = false;
+                    //$scope.searchForm.visibleOptionPanel = false;
+                    //$scope.searchForm.visibleOptionBtn = false;
                 }
                 $scope.searchChange();
             };
@@ -35,6 +35,14 @@ DirtyBranding.controller('HomeController',
             };
 
             $scope.searchSubmit = function(){
+                //si des champs New sont remplis mais pas validé, on les inclus dans les listing
+                if(typeof  $scope.new_prefixes != 'undefined' && $scope.new_prefixes.length >0)
+                    $scope.searchAddElmt('prefixes');
+                if(typeof  $scope.new_suffixes != 'undefined' && $scope.new_suffixes.length >0)
+                    $scope.searchAddElmt('suffixes');
+                if(typeof  $scope.new_extensions != 'undefined' && $scope.new_extensions.length >0)
+                    $scope.searchAddElmt('extensions');
+
                 SearchFactory.save($scope.searchForm);
                 $location.path("/results/"+$scope.searchForm.ideas);
             };
@@ -84,10 +92,13 @@ DirtyBranding.controller('HomeController',
                 }
             });
 
-            console.log($scope.ipoffice_model.selected);
 
+            $(function () {
+              $('[data-toggle="tooltip"]').tooltip()
+            });
 
             document.getElementById('newIdeasInput').focus();
+
             $('.selectpicker').selectpicker();
 
 }]);
