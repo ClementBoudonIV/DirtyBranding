@@ -5,6 +5,7 @@
     Paramètres cron : Exécution unique
     */
     date_default_timezone_set('GMT');
+    require_once __DIR__.'/../config.php';
 
     require_once __DIR__.'/vendor/autoload.php';
 
@@ -14,7 +15,7 @@
 
     //Old PHP Style
 
-    $link = new PDO("mysql:dbname=DB_API;host=localhost", "root", "root");
+    $link = new PDO("mysql:dbname=".$mysql_database.";host=".$mysql_host, $mysql_user, $mysql_pass);
 
     $xml_inpi_folder  = __DIR__.'/../../../../Ressources/INPI/XML/';
 

@@ -8,8 +8,6 @@ DirtyBranding.controller('HomeController',
         function ($scope, $rootScope, $location, $routeParams, SearchFactory){
 
 
-
-
             $scope.selectIPOffice = function(item, model){
                 $scope.searchForm.ipoffices.unshift(item.name);
             };
@@ -35,6 +33,7 @@ DirtyBranding.controller('HomeController',
             };
 
             $scope.searchSubmit = function(){
+
                 //si des champs New sont remplis mais pas validé, on les inclus dans les listing
                 if(typeof  $scope.new_prefixes != 'undefined' && $scope.new_prefixes.length >0)
                     $scope.searchAddElmt('prefixes');
@@ -45,6 +44,8 @@ DirtyBranding.controller('HomeController',
 
                 SearchFactory.save($scope.searchForm);
                 $location.path("/results/"+$scope.searchForm.ideas);
+
+
             };
 
             $scope.searchAddElmt = function(array_name){

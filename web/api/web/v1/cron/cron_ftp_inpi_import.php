@@ -5,6 +5,7 @@
     Paramètres cron : php 1 3 * * 6 (tous les samedi matin à 03:01)
     */
     date_default_timezone_set('GMT');
+    require_once __DIR__.'/../config.php';
 
     require_once __DIR__.'/vendor/autoload.php';
 
@@ -14,7 +15,7 @@
 
     //Old PHP Style
 
-    $link = new PDO("mysql:dbname=DB_API;host=localhost", "root", "root");
+    $link = new PDO("mysql:dbname=".$mysql_database.";host=".$mysql_host, $mysql_user, $mysql_pass);
 
     $time_file = mktime(0,0,0,date("m"),date('d'),date('Y'));
 
@@ -23,9 +24,7 @@
     $xml_inpi_folder  = __DIR__.'/../../../../Ressources/INPI/XML/';
 
     //INPI FTP Connexion
-    $ftp_server = '';
-    $ftp_user_name = '';
-    $ftp_user_pass = '';
+
 
     $local_zip_file = $xml_inpi_folder.$today_date.'.zip';
 
@@ -33,8 +32,8 @@
 
     $local_xml_filename = 'FR_FRNEWST66_'.date('Y-W',$time_file).'.xml';
 
-    $conn_id = ftp_connect($ftp_server);
-    $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
+    $conn_id = ftp_connect($ftp_inpi_server);
+    $login_result = ftp_login($conn_id, $ftp_inpi_user_name, $ftp_inpi_user_pass);
     ftp_pasv ( $conn_id , true );
     ftp_get($conn_id, $local_zip_file, $remote_zip_file, FTP_BINARY);
     ftp_close($conn_id);

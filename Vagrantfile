@@ -2,6 +2,7 @@
 # vi: set ft=ruby :
 
 $script = <<SCRIPT
+export APP_ENV=dev
 cd /var/www/web/api/web/v1 && composer install
 cd /var/www/web/api/web/v1/cron && composer install
 sudo cp /var/www/vhost/*.conf /etc/apache2/sites-available/

@@ -1,5 +1,51 @@
-.head-app-dirtybranding{
+body{
+    background-image: url(../img/background-photo-3072.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 
+    background-color: #464646;
+
+    color: #FFF;
+}
+
+h1{
+    font-weight: bold;
+    text-shadow: 0px 0px 10px #000;
+}
+
+.btn-shadow{
+    background: transparent;
+    color: #F2F2F2;
+
+    /* CSS Transition */
+    -webkit-transition: background .2s ease-in-out, border .2s ease-in-out;
+    -moz-transition: background .2s ease-in-out, border .2s ease-in-out;
+    -ms-transition: background .2s ease-in-out, border .2s ease-in-out;
+    -o-transition: background .2s ease-in-out, border .2s ease-in-out;
+    transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+
+
+.btn-shadow.active, .btn-shadow.focus, .btn-shadow:active, .btn-shadow:focus, .btn-shadow:hover, .open>.dropdown-toggle.btn-shadow{
+    background: transparent;
+    color: #F2F2F2;
+}
+
+.res_bloc{
+    background-color: rgba(255, 255, 255, 0.6);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    color: #000;
+}
+
+.head-app-dirtybranding{
     margin-top: 10%;
 }
 
@@ -22,9 +68,26 @@ a.res_brand:hover{
     text-decoration: none;
 }
 a.res_brand:hover > h2{
-    background-color: #EFEFEF;
+    background-color: rgba(239, 239, 239, 0.46);
+
+    -webkit-border-top-left-radius: 5px;
+    -moz-border-top-left-radius: 5px;
+    -o-border-top-left-radius: 5px;
+    border-top-left-radius: 5px;
+
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-top-right-radius: 5px;
+    -o-border-top-right-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
+.list-domain{
+    font-size: 1.1em;
+}
+
+.list-domain p{
+    margin: 0px;
+}
 
 /* Medium devices and more (desktops, 992px and up) */
 @media (min-width: 992px) {
@@ -44,6 +107,10 @@ a.res_brand:hover > h2{
 /* Under Medium devices (tablettes, 992px and down) */
 @media (max-width: 992px) {
 
+    .res_bloc{
+        border-radius: 0px;
+    }
+
     .head-app-dirtybranding{
         margin-bottom: 10%;
     }
@@ -52,6 +119,7 @@ a.res_brand:hover > h2{
         margin: 10px 0px;
         text-align: center;
     }
+
     .col-suffixes{
         margin: 10px 0px;
         text-align: center;
@@ -64,4 +132,60 @@ a.res_brand:hover > h2{
     .col-ps-nonempty{
         margin-top: 0px;
     }
+
+    a.res_brand:hover > h2{
+        -webkit-border-top-left-radius: 0px;
+        -moz-border-top-left-radius: 0px;
+        -o-border-top-left-radius: 0px;
+        border-top-left-radius: 0px;
+
+        -webkit-border-top-right-radius: 0px;
+        -moz-border-top-right-radius: 0px;
+        -o-border-top-right-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+
+    .list-group-item:first-child, .list-group-item:last-child{
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        -o-border-radius: 0px;
+        border-radius: 0px;
+    }
 }
+
+/* gestion du background HighRes responsive */
+
+/* Tablette, desktop, ... */
+/* image de base en 3072 */
+
+/* Desktop large ... */
+@media
+  only screen and (min-width: 3072px)
+{
+   body {
+        background-image: url(../img/background-photo-5274.jpg);
+    }
+}
+
+
+/* mobile classiques */
+@media
+  only screen and (max-width: 768px)
+{
+   body {
+        background-image: url(../img/background-photo-768.jpg);
+    }
+}
+
+/* mobile HD */
+@media
+  only screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2), // Safari and iOS Safari
+  only screen and (max-width: 768px) and (min-resolution: 192dpi), // IE9+
+  only screen and (max-width: 768px) and (min-resolution: 2dppx) // All other browsers
+{
+   body {
+        background-image: url(../img/background-photo-1536.jpg);
+    }
+}
+
+

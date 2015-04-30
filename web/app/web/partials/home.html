@@ -1,4 +1,4 @@
-<form class="form-group">
+<form class="form-group" novalidate>
 
      <div class="row head-app-dirtybranding">
         <div class="col-md-12 text-center">
@@ -22,17 +22,17 @@
                             data-ui-keyup="{'enter alt-space ctrl-enter':'searchSubmit()'}"
                             tabindex=1
                             id="newIdeasInput"
-                            requir>
+                            required>
                         <span class="input-group-btn btn-group-lg">
                             <button
-                                class="btn btn-primary"
+                                class="btn btn-default"
                                 type="button"
                                 data-ng-click="searchSubmit()"
                                 tabindex=2>
                                 <span class="glyphicon glyphicon-chevron-right" ></span>
                             </button>
                             <button
-                                class="btn btn-default"
+                                class="btn btn-default btn-shadow"
                                 type="button"
                                 data-ng-show="searchForm.visibleOptionBtn"
                                 data-ng-click="searchForm.visibleOptionPanel = !searchForm.visibleOptionPanel"
@@ -76,7 +76,7 @@
                             <div class="input-group col-md-3">
                                 <input
                                     type="text"
-                                    placeholder="chat"
+                                    placeholder=".rtfm"
                                     class="form-control"
                                     id="newExtensionInput"
                                     data-ng-model="new_extensions"
