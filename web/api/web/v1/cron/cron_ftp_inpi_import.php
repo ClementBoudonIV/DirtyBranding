@@ -91,6 +91,17 @@
             }
         }
 
+        $sql_ins = "INSERT
+            INTO ImportFileLog
+            (name, dt_import, ip_office)
+            VALUES
+            (?,?)";
+            $stmt_ins = $link->prepare($sql_ins);
+            $stmt_ins->bindValue(1, $xml_inpi_absolute_path);
+            $stmt_ins->bindValue(2, date('Y-m-d H:i:s'));
+            $stmt_ins->bindValue(3, 1);
+            $stmt_ins->execute();
+
         echo ' [OK]
 ';
 
