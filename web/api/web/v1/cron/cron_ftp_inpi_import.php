@@ -2,7 +2,8 @@
     /*
     Récupération via FTP des denriers fichiers de flux INPI + Import dans base de données
     V1-0 (gère uniquement les noms et classes, et uniquement les nouvelles marques)
-    Paramètres cron : php 1 3 * * 6 (tous les samedi matin à 03:01)
+    Paramètres cron : 1 3 * * 6 php web/api/web/v1/cron/cron_ftp_inpi_import.php
+        => tous les samedi matin à 03:01
     */
     date_default_timezone_set('GMT');
     require_once __DIR__.'/../config.php';
@@ -32,8 +33,8 @@
 
     $local_xml_filename = 'FR_FRNEWST66_'.date('Y-W',$time_file).'.xml';
 
-    $conn_id = ftp_connect($ftp_inpi_server);
-    $login_result = ftp_login($conn_id, $ftp_inpi_user_name, $ftp_inpi_user_pass);
+    $conn_id = ftp_connect($ftp_inpi_server) or die('FTP DOWN');
+    $login_result = ftp_login($conn_id, $ftp_inpi_user_name, $ftp_inpi_user_pass) or die('FTP LOGIN DOWN');
     ftp_pasv ( $conn_id , true );
     ftp_get($conn_id, $local_zip_file, $remote_zip_file, FTP_BINARY);
     ftp_close($conn_id);
@@ -95,7 +96,7 @@
             INTO ImportFileLog
             (name, dt_import, ip_office)
             VALUES
-            (?,?)";
+            (?,?,?)";
             $stmt_ins = $link->prepare($sql_ins);
             $stmt_ins->bindValue(1, $xml_inpi_absolute_path);
             $stmt_ins->bindValue(2, date('Y-m-d H:i:s'));

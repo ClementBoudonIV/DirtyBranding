@@ -2,7 +2,26 @@
     /*
     Import des fichiers stock et flux dans base de données
     V1-0 (gère uniquement les noms et classes, et uniquement les nouvelles marques, par leur modifs ou suppression)
-    Paramètres cron : Exécution unique
+    Paramètres cron : Exécution unique php web/api/web/v1/cron/cron_inpi_import_stock.php
+    */
+
+    /*
+    Note Interne : méthode d'export de la BDD :
+    mysqldump -u root -proot DB_API BrandsINPI --no-create-info --where="id >=0 AND id <500000" > dump-1.sql
+    mysqldump -u root -proot DB_API BrandsINPI --no-create-info --where="id >=500000 AND id <1000000" > dump-2.sql
+    mysqldump -u root -proot DB_API BrandsINPI --no-create-info --where="id >=1000000 AND id <1500000" > dump-3.sql
+    mysqldump -u root -proot DB_API BrandsINPI --no-create-info --where="id >=1500000 AND id <2000000" > dump-4.sql
+    mysqldump -u root -proot DB_API BrandsINPI --no-create-info --where="id >=2000000 AND id <2500000" > dump-5.sql
+    mysqldump -u root -proot DB_API BrandsINPI --no-create-info --where="id >=2500000 AND id <3000000" > dump-6.sql
+
+    mysqldump -u root -proot DB_API BrandsClassesINPI --no-create-info --where="id_brand >=0 AND id_brand <500000" > dump-1-C.sql
+    mysqldump -u root -proot DB_API BrandsClassesINPI --no-create-info --where="id_brand >=500000 AND id_brand <1000000" > dump-2-C.sql
+    mysqldump -u root -proot DB_API BrandsClassesINPI --no-create-info --where="id_brand >=1000000 AND id_brand <1500000" > dump-3-C.sql
+    mysqldump -u root -proot DB_API BrandsClassesINPI --no-create-info --where="id_brand >=1500000 AND id_brand <2000000" > dump-4-C.sql
+    mysqldump -u root -proot DB_API BrandsClassesINPI --no-create-info --where="id_brand >=2000000 AND id_brand <2500000" > dump-5-C.sql
+    mysqldump -u root -proot DB_API BrandsClassesINPI --no-create-info --where="id_brand >=2500000 AND id_brand <3000000" > dump-6-C.sql
+
+    gzip dump-*.sql
     */
     date_default_timezone_set('GMT');
     require_once __DIR__.'/../config.php';
