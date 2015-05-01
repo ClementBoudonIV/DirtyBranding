@@ -23,7 +23,7 @@ class MainTest extends WebTestCase
 	    $crawler = $client->request('GET', '/');
 
 	    $this->assertTrue($client->getResponse()->isOk());
-	    $this->assertContains('API DirtyBranding - Modif fonctionnelle.', $client->getResponse()->getContent());
+	    $this->assertContains('API DirtyBranding .', $client->getResponse()->getContent());
     }
 
     public function testExtensions()
