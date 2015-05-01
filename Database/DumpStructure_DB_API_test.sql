@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `DB_API` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `DB_API`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
 -- Host: localhost    Database: DB_API
