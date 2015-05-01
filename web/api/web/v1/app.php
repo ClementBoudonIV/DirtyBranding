@@ -22,7 +22,7 @@
     $app->register(new Silex\Provider\DoctrineServiceProvider());
 
     $app->get('/', function () use ($app) {
-        return 'API DirtyBranding.';
+        return 'API DirtyBranding - Modif fonctionnelle.';
     });
 
     $app->mount('/ideas', include __DIR__.'/controllers/ideas.php');
