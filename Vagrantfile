@@ -13,7 +13,7 @@ echo '127.0.0.1 api.dirtybranding.com' | sudo tee --append /etc/hosts > /dev/nul
 echo '127.0.0.1 app.dirtybranding.com' | sudo tee --append /etc/hosts > /dev/null
 echo '127.0.0.1 www.dirtybranding.com' | sudo tee --append /etc/hosts > /dev/null
 sudo /etc/init.d/apache2 restart
-mysql -uroot -proot scotchbox < /var/www/Database/*.sql
+mysql -uroot -proot scotchbox < /var/www/Database/DumpStructure_DB_API.sql
 cd /var/www/
 wget https://phar.phpunit.de/phpunit.phar
 chmod +x phpunit.phar
