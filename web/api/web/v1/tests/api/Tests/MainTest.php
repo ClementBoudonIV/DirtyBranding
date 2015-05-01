@@ -3,6 +3,7 @@ namespace DirtyBranding\Tests;
 
 require_once __DIR__.'/../../../vendor/autoload.php';
 
+
 use Silex\WebTestCase;
 
 class MainTest extends WebTestCase
@@ -10,6 +11,7 @@ class MainTest extends WebTestCase
     public function createApplication()
     {
         $app = require __DIR__.'/../../../app.php';
+        require __DIR__.'/../../../config.php';
         $app['debug'] = true;
     	$app['exception_handler']->disable();
     	return $app;

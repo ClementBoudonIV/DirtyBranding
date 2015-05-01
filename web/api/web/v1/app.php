@@ -1,13 +1,16 @@
 <?php
 
     date_default_timezone_set('GMT');
-    require_once __DIR__.'/config.php';
 
     require_once __DIR__.'/vendor/autoload.php';
 
     use PhpWhois\PhpWhois;
 
     $app = new Silex\Application();
+
+
+    require_once __DIR__.'/config.php';
+
     $app['debug'] = true;
 
 
@@ -16,16 +19,7 @@
     });
 
 
-    $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
-        'db.options' => array(
-            'driver' => 'pdo_mysql',
-            'host' => $mysql_host,
-            'dbhost' => $mysql_host,
-            'dbname' => $mysql_database,
-            'user' => $mysql_user,
-            'password' => $mysql_pass
-        ),
-    ));
+    $app->register(new Silex\Provider\DoctrineServiceProvider());
 
     $app->get('/', function () use ($app) {
         return 'API DirtyBranding.';
