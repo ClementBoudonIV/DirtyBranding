@@ -3,7 +3,7 @@
 $mysql_host = (isset($_ENV['APP_ENV']) && $_ENV['APP_ENV']=='test') ? 'localhost' : ((isset($_ENV['APP_ENV']) && $_ENV['APP_ENV']=='dev') ? 'localhost' : 'localhost');
 $mysql_user = isset($_ENV['MYSQL_USER']) ? $_ENV['MYSQL_USER'] : 'root';
 $mysql_pass = isset($_ENV['MYSQL_PASSWORD']) ? $_ENV['MYSQL_PASSWORD'] : 'root';
-$mysql_database = isset($_ENV['TEST_ENV_NUMBER']) ? 'test'.$_ENV['TEST_ENV_NUMBER'] : 'DB_API';
+$mysql_database = (isset($_ENV['APP_ENV']) && $_ENV['APP_ENV']=='test') ? 'test' : 'DB_API';
 
 $app['db.options'] = array(
     'driver' => 'pdo_mysql',
