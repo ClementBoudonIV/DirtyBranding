@@ -124,6 +124,22 @@ CREATE TABLE `ImportFileLog` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `SearchIdeaLog`
+--
+
+DROP TABLE IF EXISTS `SearchIdeaLog`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `SearchIdeaLog` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `search` varchar(255) DEFAULT NULL,
+  `dt_search` timestamp NULL DEFAULT NULL,
+  `details` text DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

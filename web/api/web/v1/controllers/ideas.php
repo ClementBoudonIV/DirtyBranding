@@ -1,4 +1,4 @@
-<?php 
+<?php
     $ideas = $app['controllers_factory'];
 
     /*
@@ -67,6 +67,26 @@
 
             //Génération de toutes les possibilités
             //TODO
+
+
+            //Log de la recherche
+            $details = 'Return : '.json_encode($array_brands)
+            .' | Prefixes : '.serialize($array_prefixes)
+            .' | Suffixes : '.serialize($array_suffixes)
+            .' | SERVER : '.serialize($_SERVER)
+            .' | COOKIE : '.serialize($_COOKIE)
+            .' | GET : '.serialize($_GET)
+            .' | POST : '.serialize($_POST);
+            $sql_ins = "INSERT
+            INTO SearchIdeaLog
+            (search, dt_search, details)
+            VALUES
+            (?,?,?)";
+            $stmt_ins = $app['db']->prepare($sql_ins);
+            $stmt_ins->bindValue(1, $idea_escaped);
+            $stmt_ins->bindValue(2, date('Y-m-d H:i:s'));
+            $stmt_ins->bindValue(3, $app->escape($details));
+            $stmt_ins->execute();
 
             return json_encode($array_brands);
     });
