@@ -93,10 +93,12 @@ DirtyBranding.controller('HomeController',
                 }
             });
 
-
-            $(function () {
-              $('[data-toggle="tooltip"]').tooltip()
-            });
+            //desactivation des tooltip pour mobile (cause un double click inutile car pas de survol sur mobile)
+            if (!window.matchMedia || (window.matchMedia("(min-width: 768px)").matches)) {
+                $(function () {
+                  $('[data-toggle="tooltip"]').tooltip()
+                });
+            }
 
             document.getElementById('newIdeasInput').focus();
 
