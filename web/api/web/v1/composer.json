@@ -2,7 +2,8 @@
     "require": {
         "silex/silex": "~1.2",
         "phpwhois/phpwhois": "~4.2",
-        "doctrine/dbal": "~2.5"
+        "doctrine/dbal": "~2.5",
+        "symfony/security": "~2.6"
     },
     "require-dev": {
         "symfony/browser-kit": "~2.6",

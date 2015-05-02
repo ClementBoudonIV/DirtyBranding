@@ -20,6 +20,7 @@
 
 
     $app->register(new Silex\Provider\DoctrineServiceProvider());
+    $app->register(new Silex\Provider\SecurityServiceProvider());
 
     $app->get('/', function () use ($app) {
         return 'API DirtyBranding.';
