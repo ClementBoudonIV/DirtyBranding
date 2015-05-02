@@ -1,6 +1,6 @@
 body{
     background-image: url(../img/background-photo-3072.jpg);
-    background-position: center center;
+    background-position: 0 0;
     background-repeat: no-repeat;
     background-attachment: fixed;
     -webkit-background-size: cover;
