@@ -1,5 +1,5 @@
 # DirtyBranding
-# test codeship
+
 ## Installation
 
 ### Pré-requis :
